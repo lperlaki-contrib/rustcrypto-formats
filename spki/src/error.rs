@@ -57,6 +57,12 @@ impl From<der::Error> for Error {
     }
 }
 
+impl From<der::ErrorKind> for Error {
+    fn from(err: der::ErrorKind) -> Error {
+        der::Error::from(err).into()
+    }
+}
+
 #[cfg(feature = "pem")]
 impl From<pem::Error> for Error {
     fn from(err: pem::Error) -> Error {
